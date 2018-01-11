@@ -1,0 +1,24 @@
+pipeline {
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        checkout scm
+        sh '''
+          docker build -t $IMAGE_NAME:$BUILD_ID .
+          docker tag $IMAGE_NAME:$BUILD_ID $IMAGE_NAME
+        '''
+      }
+    }
+    stage('Image Release') {
+      steps {
+        sh '''
+          docker push $IMAGE_NAME
+	'''
+      }
+    }
+  }
+  environment {
+    IMAGE_NAME = 'localhost:30000/p2p/compile'
+  }
+}
