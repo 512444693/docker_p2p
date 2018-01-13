@@ -6,8 +6,7 @@ RUN buildDeps='gcc-c++ openssl-devel mysql-devel libuuid-devel' \
 	&& cd /usr/lib64/mysql \
 	&& ln -s libmysqlclient_r.so libmysqlclient_r.a
 
-RUN rm -f /etc/localtime \
-	&& ln -s /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+ENV TZ Asia/Shanghai
 
 COPY public /opt/public
 COPY server /opt/server
