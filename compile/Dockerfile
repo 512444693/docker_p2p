@@ -1,6 +1,6 @@
 FROM centos:6.8
 
-RUN buildDeps='gcc-c++ openssl-devel mysql-devel libuuid-devel' \
+RUN buildDeps='gcc-c++ openssl-devel mysql-devel libuuid-devel cmake' \
 	&& yum install -y $buildDeps \
 	$$ yum clean all \
 	&& cd /usr/lib64/mysql \

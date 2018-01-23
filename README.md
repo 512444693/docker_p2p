@@ -9,10 +9,18 @@ mkdir -p server/framecommon/lib server/framecommon/include/framecommon
 mkdir -p server/srvframe/obj server/srvframe/lib server/srvframe/include
 mkdir -p server/utils/include/json server/utils/include/hiredis server/utils/lib
 
-docker build -t p2p/compile .
+docker build -t localhost:30000/p2p/compile .
 ```
 - Dockerfile会安装p2p编译的依赖库
 - public和server目录是底层库，拷贝到镜像的/opt目录下，并编译
+
+## 生成运行基础镜像
+```
+cd run
+
+docker build -t localhost:30000/p2p/run .
+```
+
 
 ## 运行示例
 
